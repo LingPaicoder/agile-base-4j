@@ -481,7 +481,7 @@ public class IdCardUtil {
         if (iYear < MIN_YEAR || iYear >= year) {
             return false;
         }
-        int datePerMonth = DateUtil.getDayNumByMonth(iYear,iMonth);
+        int datePerMonth = DateUtil.getDayNumByMonth(iYear, iMonth);
         return (iDate >= 1) && (iDate <= datePerMonth);
     }
 

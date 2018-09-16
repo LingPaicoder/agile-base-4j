@@ -35,7 +35,8 @@ public interface Ruler<T> {
      */
     @SafeVarargs
     static <T> Ruler<T> ofAll(Ruler<T>... rulers) {
-        return (checkTarget -> Arrays.stream(rulers).forEach(ruler -> ruler.check(checkTarget)));
+        return checkTarget -> Arrays.stream(rulers)
+                .forEach(ruler -> ruler.check(checkTarget));
     }
 
 }

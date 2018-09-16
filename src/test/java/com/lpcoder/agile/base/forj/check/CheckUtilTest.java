@@ -15,7 +15,12 @@ import org.junit.rules.ExpectedException;
 
 import lombok.Data;
 
-import static com.lpcoder.agile.base.forj.check.ruler.summary.StrRuler.*;
+import static com.lpcoder.agile.base.forj.check.ruler.summary.StrRuler.empty;
+import static com.lpcoder.agile.base.forj.check.ruler.summary.StrRuler.idCard;
+import static com.lpcoder.agile.base.forj.check.ruler.summary.StrRuler.lengthGte;
+import static com.lpcoder.agile.base.forj.check.ruler.summary.StrRuler.lengthLte;
+import static com.lpcoder.agile.base.forj.check.ruler.summary.StrRuler.notEmpty;
+import static com.lpcoder.agile.base.forj.check.ruler.summary.StrRuler.notNull;
 
 public class CheckUtilTest {
     @Rule
@@ -27,8 +32,8 @@ public class CheckUtilTest {
     @Test
     @SuppressWarnings("unchecked")
     public void testCommon() {
-        String trueIdcard = "130802198108204219";
-        CheckUtil.check(trueIdcard, "身份证号",
+        String trueIdCard = "130802198108204219";
+        CheckUtil.check(trueIdCard, "身份证号",
                 new StrNotNullRuler(),
                 new StrNotEmptyRuler(),
                 new StrIdCardRuler());
@@ -36,8 +41,8 @@ public class CheckUtilTest {
         thrown.expect(CheckException.class);
         thrown.expectMessage("code=-11007, desc=身份证号必须符合身份证格式");
 
-        String falseIdcard = "130802198108204210";
-        CheckUtil.check(falseIdcard, "身份证号",
+        String falseIdCard = "130802198108204210";
+        CheckUtil.check(falseIdCard, "身份证号",
                 new StrNotNullRuler(),
                 new StrNotEmptyRuler(),
                 new StrIdCardRuler());
@@ -49,14 +54,14 @@ public class CheckUtilTest {
     @Test
     @SuppressWarnings("unchecked")
     public void testFactory() {
-        String trueIdcard = "130802198108204219";
-        CheckUtil.check(trueIdcard, "身份证号", notNull(), notEmpty(), idCard());
+        String trueIdCard = "130802198108204219";
+        CheckUtil.check(trueIdCard, "身份证号", notNull(), notEmpty(), idCard());
 
         thrown.expect(CheckException.class);
         thrown.expectMessage("code=-11007, desc=身份证号必须符合身份证格式");
 
-        String falseIdcard = "130802198108204210";
-        CheckUtil.check(falseIdcard, "身份证号", notNull(), notEmpty(), idCard());
+        String falseIdCard = "130802198108204210";
+        CheckUtil.check(falseIdCard, "身份证号", notNull(), notEmpty(), idCard());
     }
 
     /**
@@ -66,8 +71,8 @@ public class CheckUtilTest {
     @SuppressWarnings("unchecked")
     public void testCatch() {
         try {
-            String falseIdcard = "130802198108204210";
-            CheckUtil.check(falseIdcard, "身份证号",
+            String falseIdCard = "130802198108204210";
+            CheckUtil.check(falseIdCard, "身份证号",
                     notNull(),
                     notEmpty(),
                     idCard());
@@ -107,12 +112,12 @@ public class CheckUtilTest {
     @Test
     @SuppressWarnings("unchecked")
     public void testChainingCall() {
-        String trueIdcard = "130802198108204219";
+        String trueIdCard = "130802198108204219";
         String specialName = "乔伊·亚历山大·比基·卡利斯勒·达夫·埃利奥特·福克斯·伊维鲁莫";
 
         thrown.expect(CheckException.class);
         thrown.expectMessage("code=-11005, desc=姓名的长度必须小于或等于10");
-        CheckUtil.check(trueIdcard, "身份证号",
+        CheckUtil.check(trueIdCard, "身份证号",
                 notNull(),
                 notEmpty(),
                 idCard());
@@ -125,7 +130,7 @@ public class CheckUtilTest {
         thrown.expect(CheckException.class);
         thrown.expectMessage("code=-11005, desc=姓名的长度必须小于或等于10");
         CheckUtil
-                .check(trueIdcard, "身份证号",
+                .check(trueIdCard, "身份证号",
                         notNull(),
                         notEmpty(),
                         idCard())
@@ -199,8 +204,9 @@ public class CheckUtilTest {
      */
     @Test
     @SuppressWarnings("unchecked")
-    public void testEntity() {
-        Ruler<Custom> customAddRuler = custom -> CheckUtil.check(custom, "商家", ObjRuler.notNull())
+    public void testEntity() throws Exception{
+        Ruler<Custom> customAddRuler = custom -> CheckUtil
+                .check(custom, "商家", ObjRuler.notNull())
                 .check(custom.getCustomId(), "商家Id", notEmpty())
                 .check(custom.getName(), "商家姓名", notEmpty())
                 .check(custom.getAge(), "商家年龄", IntRuler.lte(60));
