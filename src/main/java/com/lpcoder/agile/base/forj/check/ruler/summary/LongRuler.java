@@ -6,6 +6,7 @@ import com.lpcoder.agile.base.forj.check.ruler.detail.number.LongGtRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.LongGteRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.LongLtRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.LongLteRuler;
+import com.lpcoder.agile.base.forj.check.ruler.detail.number.LongNotEqRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.LongNotNullRuler;
 
 /**
@@ -60,6 +61,14 @@ public class LongRuler {
 
     public static Ruler<Long> notNull(long failCode, String failDesc) {
         return new LongNotNullRuler(failCode, failDesc);
+    }
+
+    public static Ruler<Long> notEq(Long norm) {
+        return new LongNotEqRuler(norm);
+    }
+
+    public static Ruler<Long> notEq(Long norm, long failCode, String failDesc) {
+        return new LongNotEqRuler(norm, failCode, failDesc);
     }
 
 }

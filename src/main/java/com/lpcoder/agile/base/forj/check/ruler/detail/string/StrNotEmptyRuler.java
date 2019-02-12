@@ -6,6 +6,7 @@ import com.lpcoder.agile.base.forj.util.StringUtil;
 
 import static com.lpcoder.agile.base.forj.check.CheckResultCodeEnum.*;
 import static com.lpcoder.agile.base.forj.check.CheckResultCodeEnum.STR_NOT_EMPTY_FAIL;
+import static com.lpcoder.agile.base.forj.check.CheckResultCodeEnum.STR_NOT_EMPTY_FAIL;
 
 /**
  * @author: liurenpeng

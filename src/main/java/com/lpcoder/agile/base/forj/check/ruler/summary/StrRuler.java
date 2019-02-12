@@ -2,6 +2,7 @@ package com.lpcoder.agile.base.forj.check.ruler.summary;
 
 import com.lpcoder.agile.base.forj.check.ruler.Ruler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.string.StrAllLetterRuler;
+import com.lpcoder.agile.base.forj.check.ruler.detail.string.StrContainsRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.string.StrEmailRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.string.StrEmptyRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.string.StrEqRuler;
@@ -11,7 +12,9 @@ import com.lpcoder.agile.base.forj.check.ruler.detail.string.StrLengthGtRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.string.StrLengthGteRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.string.StrLengthLtRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.string.StrLengthLteRuler;
+import com.lpcoder.agile.base.forj.check.ruler.detail.string.StrNotContainsRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.string.StrNotEmptyRuler;
+import com.lpcoder.agile.base.forj.check.ruler.detail.string.StrNotEqRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.string.StrNotNullRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.string.StrNumRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.string.StrPhoneRuler;
@@ -159,6 +162,30 @@ public class StrRuler {
 
     public static Ruler<String> empty(long failCode, String failDesc) {
         return new StrEmptyRuler(failCode, failDesc);
+    }
+
+    public static Ruler<String> notEq(String norm) {
+        return new StrNotEqRuler(norm);
+    }
+
+    public static Ruler<String> notEq(String norm, long failCode, String failDesc) {
+        return new StrNotEqRuler(norm, failCode, failDesc);
+    }
+
+    public static Ruler<String> contains(String norm) {
+        return new StrContainsRuler(norm);
+    }
+
+    public static Ruler<String> contains(String norm, long failCode, String failDesc) {
+        return new StrContainsRuler(norm, failCode, failDesc);
+    }
+
+    public static Ruler<String> notContains(String norm) {
+        return new StrNotContainsRuler(norm);
+    }
+
+    public static Ruler<String> notContains(String norm, long failCode, String failDesc) {
+        return new StrNotContainsRuler(norm, failCode, failDesc);
     }
 
 }

@@ -14,11 +14,22 @@ public class CheckUtil {
     }
 
     @SafeVarargs
+    public static <T> CheckHandler check(T target, Ruler<T>... rulers) {
+        return check(target, "", rulers);
+    }
+
+    @SafeVarargs
     public static <T> CheckHandler check(T target, String description, Ruler<T>... rulers) {
         return new CheckHandler().check(target, description, rulers);
     }
 
     public static class CheckHandler {
+
+        @SuppressWarnings("unchecked")
+        public <T> CheckHandler check(T target, Ruler<T>... rulers) {
+            return this.check(target, "", rulers);
+        }
+
         @SuppressWarnings("unchecked")
         public <T> CheckHandler check(T target, String description, Ruler<T>... rulers) {
             try {
@@ -31,3 +42,4 @@ public class CheckUtil {
     }
 
 }
+

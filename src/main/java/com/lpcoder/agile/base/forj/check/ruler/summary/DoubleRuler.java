@@ -6,6 +6,7 @@ import com.lpcoder.agile.base.forj.check.ruler.detail.number.DoubleGtRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.DoubleGteRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.DoubleLtRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.DoubleLteRuler;
+import com.lpcoder.agile.base.forj.check.ruler.detail.number.DoubleNotEqRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.DoubleNotNullRuler;
 
 /**
@@ -60,6 +61,14 @@ public class DoubleRuler {
 
     public static Ruler<Double> notNull(long failCode, String failDesc) {
         return new DoubleNotNullRuler(failCode, failDesc);
+    }
+
+    public static Ruler<Double> notEq(Double norm) {
+        return new DoubleNotEqRuler(norm);
+    }
+
+    public static Ruler<Double> notEq(Double norm, long failCode, String failDesc) {
+        return new DoubleNotEqRuler(norm, failCode, failDesc);
     }
 
 }

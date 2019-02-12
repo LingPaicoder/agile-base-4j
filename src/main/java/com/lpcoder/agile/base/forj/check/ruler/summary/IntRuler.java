@@ -6,6 +6,7 @@ import com.lpcoder.agile.base.forj.check.ruler.detail.number.IntGtRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.IntGteRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.IntLtRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.IntLteRuler;
+import com.lpcoder.agile.base.forj.check.ruler.detail.number.IntNotEqRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.IntNotNullRuler;
 
 /**
@@ -60,6 +61,14 @@ public class IntRuler {
 
     public static Ruler<Integer> notNull(long failCode, String failDesc) {
         return new IntNotNullRuler(failCode, failDesc);
+    }
+
+    public static Ruler<Integer> notEq(Integer norm) {
+        return new IntNotEqRuler(norm);
+    }
+
+    public static Ruler<Integer> notEq(Integer norm, long failCode, String failDesc) {
+        return new IntNotEqRuler(norm, failCode, failDesc);
     }
 
 }

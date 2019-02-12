@@ -1,6 +1,7 @@
 package com.lpcoder.agile.base.forj.check.ruler.summary;
 
 import com.lpcoder.agile.base.forj.check.ruler.Ruler;
+import com.lpcoder.agile.base.forj.check.ruler.detail.array.ArrContainsRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.array.ArrLengthEqRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.array.ArrLengthGtRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.array.ArrLengthGteRuler;
@@ -8,6 +9,7 @@ import com.lpcoder.agile.base.forj.check.ruler.detail.array.ArrLengthLtRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.array.ArrLengthLteRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.array.ArrNotContainsDupRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.array.ArrNotContainsNullRuler;
+import com.lpcoder.agile.base.forj.check.ruler.detail.array.ArrNotContainsRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.array.ArrNotEmptyRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.array.ArrNotNullRuler;
 
@@ -87,6 +89,22 @@ public class ArrRuler {
 
     public static Ruler<Object[]> notNull(long failCode, String failDesc) {
         return new ArrNotNullRuler(failCode, failDesc);
+    }
+
+    public static Ruler<Object[]> contains(Object norm) {
+        return new ArrContainsRuler(norm);
+    }
+
+    public static Ruler<Object[]> contains(Object norm, long failCode, String failDesc) {
+        return new ArrContainsRuler(norm, failCode, failDesc);
+    }
+
+    public static Ruler<Object[]> notContains(Object norm) {
+        return new ArrNotContainsRuler(norm);
+    }
+
+    public static Ruler<Object[]> notContains(Object norm, long failCode, String failDesc) {
+        return new ArrNotContainsRuler(norm, failCode, failDesc);
     }
 
 }

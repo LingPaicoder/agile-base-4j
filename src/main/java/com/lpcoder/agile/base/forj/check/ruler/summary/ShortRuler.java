@@ -6,6 +6,7 @@ import com.lpcoder.agile.base.forj.check.ruler.detail.number.ShortGtRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.ShortGteRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.ShortLtRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.ShortLteRuler;
+import com.lpcoder.agile.base.forj.check.ruler.detail.number.ShortNotEqRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.ShortNotNullRuler;
 
 /**
@@ -60,6 +61,14 @@ public class ShortRuler {
 
     public static Ruler<Short> notNull(long failCode, String failDesc) {
         return new ShortNotNullRuler(failCode, failDesc);
+    }
+
+    public static Ruler<Short> notEq(Short norm) {
+        return new ShortNotEqRuler(norm);
+    }
+
+    public static Ruler<Short> notEq(Short norm, long failCode, String failDesc) {
+        return new ShortNotEqRuler(norm, failCode, failDesc);
     }
 
 }

@@ -1,8 +1,10 @@
 package com.lpcoder.agile.base.forj.check.ruler.summary;
 
 import com.lpcoder.agile.base.forj.check.ruler.Ruler;
+import com.lpcoder.agile.base.forj.check.ruler.detail.collection.CollContainsRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.collection.CollNotContainsDupRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.collection.CollNotContainsNullRuler;
+import com.lpcoder.agile.base.forj.check.ruler.detail.collection.CollNotContainsRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.collection.CollNotEmptyRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.collection.CollNotNullRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.collection.CollSizeEqRuler;
@@ -89,6 +91,22 @@ public class CollRuler {
 
     public static Ruler<Collection> notNull(long failCode, String failDesc) {
         return new CollNotNullRuler(failCode, failDesc);
+    }
+
+    public static Ruler<Collection> contains(Object norm) {
+        return new CollContainsRuler(norm);
+    }
+
+    public static Ruler<Collection> contains(Object norm, long failCode, String failDesc) {
+        return new CollContainsRuler(norm, failCode, failDesc);
+    }
+
+    public static Ruler<Collection> notContains(Object norm) {
+        return new CollNotContainsRuler(norm);
+    }
+
+    public static Ruler<Collection> notContains(Object norm, long failCode, String failDesc) {
+        return new CollNotContainsRuler(norm, failCode, failDesc);
     }
 
 }

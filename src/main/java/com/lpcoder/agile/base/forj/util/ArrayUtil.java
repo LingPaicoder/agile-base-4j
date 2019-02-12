@@ -18,6 +18,14 @@ public class ArrayUtil extends ArrayUtils {
         return null != target;
     }
 
+    public static boolean isContains(Object[] target, Object norm) {
+        return ArrayUtil.contains(target, norm);
+    }
+
+    public static boolean isNotContains(Object[] target, Object norm) {
+        return !isContains(target, norm);
+    }
+
     public static boolean isContainsNull(Object[] target) {
         return ArrayUtil.contains(target, null);
     }

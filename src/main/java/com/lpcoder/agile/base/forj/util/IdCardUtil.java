@@ -1,5 +1,7 @@
 package com.lpcoder.agile.base.forj.util;
 
+import com.lpcoder.agile.base.forj.check.CheckUtil;
+import com.lpcoder.agile.base.forj.check.ruler.summary.StrRuler;
 import com.lpcoder.agile.base.forj.enumeration.GenderEnum;
 
 import java.text.ParseException;
@@ -55,11 +57,12 @@ public class IdCardUtil {
         if (null == idCard) {
             return false;
         }
-        String card = idCard.trim();
-        if (validateIdCard18(card) || validateIdCard15(card) || validateIdCard10(card)) {
-            return true;
+        try {
+            String card = idCard.trim();
+            return (validateIdCard18(card) || validateIdCard15(card));
+        } catch (Exception e) {
+            return false;
         }
-        return false;
     }
 
     /**
@@ -339,20 +342,32 @@ public class IdCardUtil {
      * 根据身份编号获取年龄
      */
     public static int getAgeByIdCard(String idCard) {
-        int iAge = 0;
-        if (StringUtil.isEmpty(idCard)) {
-            throw new IllegalArgumentException("idCard is empty");
-        }
+        CheckUtil.check(idCard, StrRuler.notNull(), StrRuler.idCard());
         if (idCard.length() == CHINA_ID_MIN_LENGTH) {
             idCard = convert15CardTo18(idCard);
         }
-        if (idCard.length() == CHINA_ID_MAX_LENGTH) {
-            String year = idCard.substring(6, 10);
-            Calendar cal = Calendar.getInstance();
-            int iCurrYear = cal.get(Calendar.YEAR);
-            iAge = iCurrYear - Integer.valueOf(year);
+        int birthYear = getYearByIdCard(idCard);
+        int birthMonth = getMonthByIdCard(idCard);
+        int birthDay = getDateByIdCard(idCard);
+
+        Calendar cal = Calendar.getInstance();
+        int currYear = cal.get(Calendar.YEAR);
+        int currMonth = cal.get(Calendar.MONTH) + 1;
+        int currDay = cal.get(Calendar.DATE);
+
+        if (birthYear >= currYear) {
+            return 0;
         }
-        return iAge;
+        if (birthMonth > currMonth) {
+            return currYear - birthYear - 1;
+        }
+        if (birthMonth < currMonth) {
+            return currYear - birthYear;
+        }
+        if (birthDay >= currDay) {
+            return currYear - birthYear - 1;
+        }
+        return currYear - birthYear;
     }
 
     /**

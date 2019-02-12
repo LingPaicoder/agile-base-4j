@@ -37,10 +37,10 @@ public class StringUtil extends StringUtils {
 
     public static String upperFirstLetter(String target) {
         byte[] items = target.getBytes();
-        if (items[0] > LOWER_CASE_A && items[0] < LOWER_CASE_Z){
+        if (items[0] > LOWER_CASE_A && items[0] < LOWER_CASE_Z) {
             items[0] = (byte) ((char) items[0] - 'a' + 'A');
             return new String(items);
-        }else {
+        } else {
             return target;
         }
     }
@@ -99,15 +99,18 @@ public class StringUtil extends StringUtils {
     public static boolean isAllLetter(String txt) {
         return LETTER_PATTERN.matcher(txt).matches();
     }
-    public static boolean isNotAllLetter(String txt){
+
+    public static boolean isNotAllLetter(String txt) {
         return !isAllLetter(txt);
     }
+
     /**
      * url校验
      */
     public static boolean isUrl(String txt) {
         return txt.startsWith("http://") || txt.startsWith("https://");
     }
+
     /**
      * yyyy-MM-dd校验
      */
@@ -158,6 +161,18 @@ public class StringUtil extends StringUtils {
 
     public static boolean isEq(String target, String norm) {
         return target.equals(norm);
+    }
+
+    public static boolean isNotEq(String target, String norm) {
+        return isEq(target, norm);
+    }
+
+    public static boolean isContains(String target, String norm) {
+        return target.contains(norm);
+    }
+
+    public static boolean isNotContains(String target, String norm) {
+        return !isContains(target, norm);
     }
 
     public static boolean isLengthEq(String target, int norm) {

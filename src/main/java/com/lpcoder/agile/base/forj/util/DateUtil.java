@@ -20,6 +20,13 @@ public class DateUtil extends DateUtils {
     }
 
     /**
+     * 两个日期间隔的天数
+     */
+    public static int dayNumBetween(Date beforeDay, Date afterDay) {
+        return (int) ((afterDay.getTime() - beforeDay.getTime()) / (1000 * 60 * 60 * 24));
+    }
+
+    /**
      * 获取日期字符串 yyyy-mm-dd
      */
     public static String getDateStr(Date date) {
@@ -59,6 +66,28 @@ public class DateUtil extends DateUtils {
      */
     public static Date parseDate(String dateStr, String format) throws ParseException {
         return DateUtils.parseDate(dateStr, format);
+    }
+
+    /**
+     * 取得系统当前时间后n天
+     *
+     * @param day 后延天数
+     */
+    public static Date getDateAfterCurrentDate(int day) {
+        return getDateAfterGivenDate(new Date(), day);
+    }
+
+    /**
+     * 取得指定时间后n天
+     *
+     * @param date 指定的时间
+     * @param day  后延天数
+     */
+    public static Date getDateAfterGivenDate(Date date, int day) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        c.add(Calendar.DAY_OF_MONTH, day);
+        return c.getTime();
     }
 
     /**
@@ -160,6 +189,10 @@ public class DateUtil extends DateUtils {
 
     public static boolean isBeforeOrEq(Date target, Date norm) {
         return target.getTime() <= norm.getTime();
+    }
+
+    public static boolean isNotEq(Date target, Date norm) {
+        return !isEq(target, norm);
     }
 
 }

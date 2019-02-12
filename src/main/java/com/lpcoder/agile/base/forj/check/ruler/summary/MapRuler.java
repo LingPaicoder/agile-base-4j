@@ -1,7 +1,9 @@
 package com.lpcoder.agile.base.forj.check.ruler.summary;
 
 import com.lpcoder.agile.base.forj.check.ruler.Ruler;
+import com.lpcoder.agile.base.forj.check.ruler.detail.map.MapKeyContainsRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.map.MapKeyNotContainsNullRuler;
+import com.lpcoder.agile.base.forj.check.ruler.detail.map.MapKeyNotContainsRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.map.MapNotEmptyRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.map.MapNotNullRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.map.MapSizeEqRuler;
@@ -9,6 +11,8 @@ import com.lpcoder.agile.base.forj.check.ruler.detail.map.MapSizeGtRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.map.MapSizeGteRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.map.MapSizeLtRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.map.MapSizeLteRuler;
+import com.lpcoder.agile.base.forj.check.ruler.detail.map.MapValueContainsRuler;
+import com.lpcoder.agile.base.forj.check.ruler.detail.map.MapValueNotContainsRuler;
 
 import java.util.Map;
 
@@ -80,6 +84,38 @@ public class MapRuler {
 
     public static Ruler<Map> notNull(long failCode, String failDesc) {
         return new MapNotNullRuler(failCode, failDesc);
+    }
+
+    public static Ruler<Map> keyContains(Object norm) {
+        return new MapKeyContainsRuler(norm);
+    }
+
+    public static Ruler<Map> keyContains(Object norm, long failCode, String failDesc) {
+        return new MapKeyContainsRuler(norm, failCode, failDesc);
+    }
+
+    public static Ruler<Map> keyNotContains(Object norm) {
+        return new MapKeyNotContainsRuler(norm);
+    }
+
+    public static Ruler<Map> keyNotContains(Object norm, long failCode, String failDesc) {
+        return new MapKeyNotContainsRuler(norm, failCode, failDesc);
+    }
+
+    public static Ruler<Map> valueContains(Object norm) {
+        return new MapValueContainsRuler(norm);
+    }
+
+    public static Ruler<Map> valueContains(Object norm, long failCode, String failDesc) {
+        return new MapValueContainsRuler(norm, failCode, failDesc);
+    }
+
+    public static Ruler<Map> valueNotContains(Object norm) {
+        return new MapValueNotContainsRuler(norm);
+    }
+
+    public static Ruler<Map> valueNotContains(Object norm, long failCode, String failDesc) {
+        return new MapValueNotContainsRuler(norm, failCode, failDesc);
     }
 
 }

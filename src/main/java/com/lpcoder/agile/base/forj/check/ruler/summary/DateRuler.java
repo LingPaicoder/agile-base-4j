@@ -6,6 +6,7 @@ import com.lpcoder.agile.base.forj.check.ruler.detail.date.DateAfterRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.date.DateBeforeOrEqRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.date.DateBeforeRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.date.DateEqRuler;
+import com.lpcoder.agile.base.forj.check.ruler.detail.date.DateNotEqRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.date.DateNotNullRuler;
 
 import java.util.Date;
@@ -62,6 +63,14 @@ public class DateRuler {
 
     public static Ruler<Date> notNull(long failCode, String failDesc) {
         return new DateNotNullRuler(failCode, failDesc);
+    }
+
+    public static Ruler<Date> notEq(Date norm) {
+        return new DateNotEqRuler(norm);
+    }
+
+    public static Ruler<Date> notEq(Date norm, long failCode, String failDesc) {
+        return new DateNotEqRuler(norm, failCode, failDesc);
     }
 
 }

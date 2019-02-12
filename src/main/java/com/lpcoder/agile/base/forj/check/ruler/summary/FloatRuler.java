@@ -6,6 +6,7 @@ import com.lpcoder.agile.base.forj.check.ruler.detail.number.FloatGtRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.FloatGteRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.FloatLtRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.FloatLteRuler;
+import com.lpcoder.agile.base.forj.check.ruler.detail.number.FloatNotEqRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.FloatNotNullRuler;
 
 /**
@@ -60,6 +61,14 @@ public class FloatRuler {
 
     public static Ruler<Float> notNull(long failCode, String failDesc) {
         return new FloatNotNullRuler(failCode, failDesc);
+    }
+
+    public static Ruler<Float> notEq(Float norm) {
+        return new FloatNotEqRuler(norm);
+    }
+
+    public static Ruler<Float> notEq(Float norm, long failCode, String failDesc) {
+        return new FloatNotEqRuler(norm, failCode, failDesc);
     }
 
 }

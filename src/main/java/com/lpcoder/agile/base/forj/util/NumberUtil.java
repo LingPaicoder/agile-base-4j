@@ -21,6 +21,10 @@ public class NumberUtil {
         return target.byteValue() == norm.byteValue();
     }
 
+    public static boolean isNotEq(Byte target, Byte norm) {
+        return !isEq(target, norm);
+    }
+
     public static boolean isGt(Byte target, Byte norm) {
         return target > norm;
     }
@@ -43,6 +47,10 @@ public class NumberUtil {
 
     public static boolean isEq(Short target, Short norm) {
         return target.shortValue() == norm.shortValue();
+    }
+
+    public static boolean isNotEq(Short target, Short norm) {
+        return !isEq(target, norm);
     }
 
     public static boolean isGt(Short target, Short norm) {
@@ -69,6 +77,10 @@ public class NumberUtil {
         return target.intValue() == norm.intValue();
     }
 
+    public static boolean isNotEq(Integer target, Integer norm) {
+        return !isEq(target, norm);
+    }
+
     public static boolean isGt(Integer target, Integer norm) {
         return target > norm;
     }
@@ -91,6 +103,10 @@ public class NumberUtil {
 
     public static boolean isEq(Long target, Long norm) {
         return target.longValue() == norm.longValue();
+    }
+
+    public static boolean isNotEq(Long target, Long norm) {
+        return !isEq(target, norm);
     }
 
     public static boolean isGt(Long target, Long norm) {
@@ -117,6 +133,10 @@ public class NumberUtil {
         return target.floatValue() == norm.floatValue();
     }
 
+    public static boolean isNotEq(Float target, Float norm) {
+        return !isEq(target, norm);
+    }
+
     public static boolean isGt(Float target, Float norm) {
         return target > norm;
     }
@@ -139,6 +159,10 @@ public class NumberUtil {
 
     public static boolean isEq(Double target, Double norm) {
         return target.doubleValue() == norm.doubleValue();
+    }
+
+    public static boolean isNotEq(Double target, Double norm) {
+        return !isEq(target, norm);
     }
 
     public static boolean isGt(Double target, Double norm) {

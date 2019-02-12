@@ -6,6 +6,7 @@ import com.lpcoder.agile.base.forj.check.ruler.detail.number.ByteGtRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.ByteGteRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.ByteLtRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.ByteLteRuler;
+import com.lpcoder.agile.base.forj.check.ruler.detail.number.ByteNotEqRuler;
 import com.lpcoder.agile.base.forj.check.ruler.detail.number.ByteNotNullRuler;
 
 /**
@@ -60,6 +61,14 @@ public class ByteRuler {
 
     public static Ruler<Byte> notNull(long failCode, String failDesc) {
         return new ByteNotNullRuler(failCode, failDesc);
+    }
+
+    public static Ruler<Byte> notEq(Byte norm) {
+        return new ByteNotEqRuler(norm);
+    }
+
+    public static Ruler<Byte> notEq(Byte norm, long failCode, String failDesc) {
+        return new ByteNotEqRuler(norm, failCode, failDesc);
     }
 
 }
