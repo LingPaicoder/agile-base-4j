@@ -8,16 +8,10 @@ import org.slf4j.Logger;
  * @date: Created in 2017-10-11
  */
 public interface LoggerDecorator extends Logger {
-
     /**
-     * 清除
+     * 设置logId
      */
-    LoggerDecorator clear();
-
-    /**
-     * 注册参数
-     */
-    LoggerDecorator register(String key, Object val);
+    LoggerDecorator setLogId(String logId);
 
     /**
      * 设置前缀.可通过拦截器由{@link LogDesc#value()}提供
@@ -25,8 +19,13 @@ public interface LoggerDecorator extends Logger {
     LoggerDecorator setBusinessPrefix(String prefix);
 
     /**
-     * 设置logId
+     * 注册参数
      */
-    LoggerDecorator setLogId(String logId);
+    LoggerDecorator register(String key, Object val);
 
+    /**
+     * 清除
+     */
+    LoggerDecorator clear();
+    
 }
