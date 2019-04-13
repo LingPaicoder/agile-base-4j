@@ -6,6 +6,10 @@ package com.lpcoder.agile.base.forj.enumeration;
  */
 public enum WeekEnum {
 
+    /**
+     * 星期枚举
+     */
+
     SUNDAY(1,"周日"),
     MONDAY(2,"周一"),
     TUESDAY(3,"周二"),

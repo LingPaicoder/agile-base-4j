@@ -6,6 +6,10 @@ package com.lpcoder.agile.base.forj.enumeration;
  */
 public enum GenderEnum {
 
+    /**
+     * 性别枚举
+     */
+
     MAN,WOMAN,UNKNOWN
 
 }
