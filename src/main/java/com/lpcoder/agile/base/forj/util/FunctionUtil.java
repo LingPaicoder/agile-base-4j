@@ -4,6 +4,7 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 /**
  * @author: liurenpeng
@@ -44,6 +45,17 @@ public class FunctionUtil {
         };
     }
 
+    public static <T> Supplier<T> tryOfS(UncheckedSupplier<T> supplier) {
+        Objects.requireNonNull(supplier);
+        return () -> {
+            try {
+                return supplier.get();
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        };
+    }
+
     @FunctionalInterface
     public interface UncheckedFunction<T, R> {
         R apply(T t) throws Exception;
@@ -57,6 +69,11 @@ public class FunctionUtil {
     @FunctionalInterface
     public interface UncheckedPredicate<T> {
         boolean test(T t) throws Exception;
+    }
+
+    @FunctionalInterface
+    public interface UncheckedSupplier<T> {
+        T get() throws Exception;
     }
 
 }
