@@ -1,5 +1,7 @@
 package com.lpcoder.agile.base.forj.util;
 
+import com.lpcoder.agile.base.forj.helper.clazz.ClassHelper;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -43,12 +45,12 @@ public class BeanUtil {
      * @throws Exception
      */
     public static void setDefaultValue(Object bean) throws Exception {
-        ClassUtil.getHierarchyFields(bean.getClass()).values().stream()
+        ClassHelper.getHierarchyFields(bean.getClass()).values().stream()
                 .filter(field -> DEFAULTABLE_CLASS_SET.contains(field.getType()))
-                .filter(field -> null != ClassUtil.getGetterMethod(bean.getClass(), field)
-                        && null == ClassUtil.getFieldValue(bean, field))
-                .filter(field -> null != ClassUtil.getSetterMethod(bean.getClass(), field))
-                .forEach(field -> ClassUtil.setFieldValue(bean, field,
+                .filter(field -> null != ClassHelper.getGetterMethod(bean.getClass(), field)
+                        && null == ClassHelper.getFieldValue(bean, field))
+                .filter(field -> null != ClassHelper.getSetterMethod(bean.getClass(), field))
+                .forEach(field -> ClassHelper.setFieldValue(bean, field,
                         getDefaultValueByClass(field.getType())));
     }
 
